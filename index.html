@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<link rel="shortcut icon" href="assets/artistsphere.ico.png" type="image/x-icon" />
+	<title>ArtistSphere</title>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.10/handlebars.js"></script>
+	<link rel="stylesheet" href="public/styles/style.css">
+	<link href="https://fonts.googleapis.com/css?family=El+Messiri|Raleway" rel="stylesheet">
+
+</head>
+<body>
+
+	<main>
+		<aside class="opening">
+			<header>
+				<h1><img src="assets/artistsphere.ico.png" alt="">ARTISTSPHERE</h1>
+			</header>
+					
+			<form id="artist-search" name="artist-search-form">
+				<label for="artist-input"><h2>Search An Artist</h2></label>
+				<input type="text" id="artist-input" name="search" value=""/>
+				<input type="submit" name="submit"/>
+			</form>
+
+			<div id="main-artist" class="hidden">
+			</div>
+		</aside>
+		
+		<div id="related-artists" class="clearfix hidden">
+		</div>
+	</main>
+
+
+	<script id="main-artist-template" type="text/x-handlebars-template">
+		<div class="grid-item">
+			<h2>{{name}}</h2>
+			<div class="img">
+				<img src="{{photo}}"" alt="" />
+			</div> 
+			<iframe class= "tracks" src="https://open.spotify.com/embed?uri={{uri}}&theme=white" width="200" height="80" frameborder="0" allowtransparency="true"></iframe>
+		</div>
+	</script>
+
+	<script id="related-artists-template" class="hidden" type="text/x-handlebars-template">
+	   {{#each artist}}
+			<div class="grid-item clearfix">
+				<div>
+					<h2 id='{{id}}' onclick=app.clickArtistNameSearch(id)><a>{{name}}</a></h2>
+				</div>
+				<div class="img">
+					<img src="{{photo}}"" alt="" />
+				</div> 
+
+				<iframe class="tracks" src="https://open.spotify.com/embed?uri={{uri}}&theme=white" width="250" height="299" frameborder="0" allowtransparency="true"></iframe>	
+				
+			</div>
+	   {{/each}}
+	</script>
+
+	<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+	<script src="public/scripts/main.js"></script>
+</body>
+</html>

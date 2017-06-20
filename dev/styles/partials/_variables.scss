@@ -1,0 +1,25 @@
+//fonts
+$font1: 'El Messiri', sans-serif;
+$font2: 'Raleway', sans-serif;
+//backgrounds
+$pink: #E7DADB;
+$oldpink: #FAF4F4;
+//font colours
+$dark: #343141; 
+$white: white;
+$black: black;
+
+//grid item styling colours
+$pink0: rgba(250, 240, 244, 0.4);
+$pink1: linear-gradient(to bottom right,
+			rgba(250, 240, 244, 0.4), 
+			rgba(255, 255, 255, 0.85));
+$pink2: linear-gradient(to top left,
+			rgba(250, 244, 244, 0.4), 
+			rgba(255, 255, 255, 0.85));
+
+// NOT IN USE RIGHT NOW -- later for themes
+$lavender: #e0e0f4;	
+$lavendertheme: rgba(224, 224, 244, 0.8);
+$pinktheme: rgba(210, 199, 200, 0.8);
+$darktheme: rgba(0, 0, 0, 0.4);

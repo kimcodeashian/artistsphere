@@ -1,0 +1,41 @@
+.opening {
+	width: 200vw;
+	position: relative;
+	header {
+		left: 20vw;
+		width: 60vw;
+		top: 10%;
+		font-size: 30px;
+		h1 {
+			&:after{
+				font-size: 18px;
+				position: relative;
+				left: 45px;
+				top: -15px;
+				display: block;
+			}
+		}
+		img {
+			width: 100px;
+			height: 101px;
+			border-radius: none;
+			top: 50px;
+			left: -20px;
+			position: relative;
+			border-radius: 0%; 
+			display: inline;
+		}
+		
+	}
+	form {
+		width: 60vw;
+		left: 20vw;
+		margin: 15% 0 0;
+		position: relative;
+		input[type='text'] {
+			text-align: center;
+			font-size: 25px;
+			padding: 4%;
+		}
+	}
+}
