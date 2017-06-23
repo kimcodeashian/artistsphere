@@ -61,6 +61,9 @@ main {
 	height: 100vh;
 	display: flex;	
 	justify-content: flex-end;
+	&.hidden {
+		opacity: 0;
+	}
 }
 
 

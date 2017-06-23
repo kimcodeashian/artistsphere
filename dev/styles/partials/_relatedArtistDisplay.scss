@@ -4,7 +4,9 @@
 	height: 100vh;
 	padding-top: 5vh;
 	overflow: auto;
+	h3 {
 
+	}
 	.grid-item {
 		width: 30%;
 		float: left;
@@ -59,4 +61,5 @@ a { // artist links
 		visibility: visible;
 		transform: scaleX(1);
 	}
+
 }

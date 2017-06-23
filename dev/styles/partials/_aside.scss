@@ -6,6 +6,7 @@ aside {
 	bottom: 0;
 	width: 20%;
 	position: relative;
+	min-width: 300px;
 	&.searched { // NEED FIXING AFTER
 		&:after {
 			content: "";
@@ -47,7 +48,8 @@ form {
 		box-shadow: 3px 3px 5px rgba(80,80,80,0.5);
 		&:focus {
 			background: $white;
-			border: none;
+
+			outline: 1px solid black;
 		}
 	}
 	input[type='submit'] {

@@ -4,19 +4,38 @@
 	<meta charset="UTF-8">
 	<link rel="shortcut icon" href="assets/artistsphere.ico.png" type="image/x-icon" />
 	<title>ArtistSphere</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.10/handlebars.js"></script>
 	<link rel="stylesheet" href="public/styles/style.css">
 	<link href="https://fonts.googleapis.com/css?family=El+Messiri|Raleway" rel="stylesheet">
 
 </head>
 <body>
+	<div id="info-modal" class="modal-back">
+		<div class="modal-content">
+	    	<h2>Welcome To ArtistSphere!</h2>
 
-	<main>
-		<aside class="opening">
+	    	<h3>What Is ArtistSphere?</h3>
+	    	<p>ArtistSphere is a web application created to help you discover new artists and songs based on artists that you already know and love! It is built using the Spotify API, and draws from it's entire library, giving access to millions of songs and artists. 
+	    	<br>
+	    	★ Please have Spotify open to listen to full songs instead of the 30 second preview.</p>
+
+	    	<h3>How Does It Work?</h3>
+			<p>1. Enter an artist in the search bar below</p>
+			<p>2. ArtistSphere will reveal 10-25 related artists along with their top 10 tracks! </p>
+			<p>3. Click the tracks to play music, or click an artist's name to make them the new search point.</p>
+			<form id="artist-search" name="artist-search-form">
+				<input type="text" id="artist-input" name="search" value="" placeholder="Search An Artist" aria-label="Search an Artist"/>
+				<input type="submit" name="submit"/>
+			</form>
+	  	</div>
+	</div>
+	<main class="hidden">
+		<aside>
 			<header>
 				<h1><img src="assets/artistsphere.ico.png" alt="">ARTISTSPHERE</h1>
 			</header>
-					
+					 
 			<form id="artist-search" name="artist-search-form">
 				<label for="artist-input"><h2>Search An Artist</h2></label>
 				<input type="text" id="artist-input" name="search" value=""/>
@@ -38,7 +57,7 @@
 			<div class="img">
 				<img src="{{photo}}"" alt="" />
 			</div> 
-			<iframe class= "tracks" src="https://open.spotify.com/embed?uri={{uri}}&theme=white" width="200" height="80" frameborder="0" allowtransparency="true"></iframe>
+			<iframe class= "tracks" src="https://open.spotify.com/embed?uri={{uri}}&theme=white" width="200" height="100" frameborder="0" allowtransparency="true"></iframe>
 		</div>
 	</script>
 

@@ -27,7 +27,8 @@ app.init = function(){
 		}
 
 		app.userQuery();
-		app.clickArtistNameSearch();
+		//keep main hidden 
+		
 	})
 	
 };
@@ -39,7 +40,8 @@ app.userQuery = function(){
 
 	// wait for user submit
 	$("#artist-search").on("submit", event => {
-		app.removeOpeningClasses(); 
+		$('#info-modal').fadeOut(300);
+		$('main').removeClass("hidden"); 
 		event.preventDefault();
 
 		// hide search results if searched before - animation effects to take in place 
@@ -48,8 +50,8 @@ app.userQuery = function(){
 		let query = $("input[type='text']").val(); //store value for query purposes
 		$("#artist-input").val(""); //clear text box
 
-		
 		app.getArtistID(query); // find Artist ID from user search
+		app.clickArtistNameSearch();
 	});
 
 };
@@ -106,12 +108,14 @@ app.getRelatedArtist = function(id){
 		});
 		//render template 
 		app.displayRelatedArtists(artists)
+
 	});
 };
 
-app.clickArtistNameSearch = function(id) {
+app.clickArtistNameSearch = function(id) { 
 
-	$("#main-artist, #related-artists").addClass("hidden")
+	$("#main-artist, #related-artists").addClass("hidden") //WHY ARE THERE TWO OF THE SAME LINES HERE
+
 	$.ajax({
 		url: `${app.apiUrl}/artists/${id}`,
 		method: "GET",
@@ -124,7 +128,8 @@ app.clickArtistNameSearch = function(id) {
 			uri: res.uri,
 			photo: res.images["1"].url,
 		};
-		$("#main-artist, #related-artists").addClass("hidden")
+
+		$("#main-artist, #related-artists").addClass("hidden") //WHY ARE THERE TWO OF THE SAME LINES HERE
 		app.displayMainArtist(mainArtist);
 		app.getRelatedArtist(id);
 	})
@@ -138,6 +143,7 @@ app.displayMainArtist = function(artist) {
 	$("body").css('background', `linear-gradient(rgba(210, 199, 200, 0.8),rgba(210, 199, 200, 0.8)), url(${artist.photo}) no-repeat center/cover`);
 };
 
+//compiling related artists list with array of artist objects
 app.displayRelatedArtists = function(artists) {
 	const source = $("#related-artists-template").html();
 	const template = Handlebars.compile(source);
@@ -151,6 +157,7 @@ app.displayRelatedArtists = function(artists) {
 // ----- DOCUMENT READY ----- 
 $(function(){
 	app.init();
-	app.clickArtistNameSearch();
+
+	
 
 });
