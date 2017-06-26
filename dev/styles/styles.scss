@@ -1,6 +1,6 @@
 @import 'partials/setup.scss';
 @import 'partials/variables';
-@import 'partials/openingSearch';
+@import 'partials/modalSearch';
 @import 'partials/aside';
 @import 'partials/relatedArtistDisplay';
 
@@ -9,6 +9,7 @@ body {
 	background: $pink;
 	width: 100vw;
 	font-family: $font2;
+	margin: 0 auto;
 }
 img {
 	width: 100%;
@@ -23,17 +24,11 @@ h1, h2 {
 	text-align: center;
 	color: $dark;
 	// text-shadow: 3px 3px 3px rgba(80,80,80,0.5);		
-	margin: 5% 0;
+	margin: 20px 0;
 }
 h1{
 	font-family: $font1;
-	margin: 0;
-	&:after{
-		content: "Revolve around your favourite artists!";
-		font-family: $font2;
-		font-size: 14px;
-		display: block;
-	}
+	
 }
 
 h2 {
@@ -46,6 +41,7 @@ h2 {
 	margin: 0 auto;
 	position: relative;
 	padding-bottom: 40px;
+
 	margin-bottom: 50px;
 	box-shadow: 5px 7px 7px rgba(80,80,80,0.5);
 }
@@ -65,6 +61,24 @@ main {
 		opacity: 0;
 	}
 }
+#myBtn {
+	display: none;
+	position: fixed;
+	bottom: 10px;
+	right: 20px;
+	z-index: 99;
+	border: none;
+	outline: none;
+	background-color: $dark;
+	color: white;
+	cursor: pointer;
+	padding: 15px;
+	border-radius: 10px;
+}
+
+#myBtn:hover {
+  background-color: #555;
+}
 
 
 // fade in/ out transitions 
@@ -77,5 +91,14 @@ main {
 	}
 }
 
-
+@media (max-width: 650px) {
+	.grid-item {
+		.img {
+			display: none;
+		}
+	}
+	main {
+	    flex-direction: column;
+	}
+}
 	

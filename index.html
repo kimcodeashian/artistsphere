@@ -13,55 +13,60 @@
 <body>
 	<div id="info-modal" class="modal-back">
 		<div class="modal-content">
-	    	<h2>Welcome To ArtistSphere!</h2>
+	    	<h1>Welcome To ArtistSphere!</h1>
 
-	    	<h3>What Is ArtistSphere?</h3>
+	    	<h2>What Is ArtistSphere?</h2>
 	    	<p>ArtistSphere is a web application created to help you discover new artists and songs based on artists that you already know and love! It is built using the Spotify API, and draws from it's entire library, giving access to millions of songs and artists. 
 	    	<br>
 	    	★ Please have Spotify open to listen to full songs instead of the 30 second preview.</p>
 
-	    	<h3>How Does It Work?</h3>
+	    	<h2>How Does It Work?</h2>
 			<p>1. Enter an artist in the search bar below</p>
 			<p>2. ArtistSphere will reveal 10-25 related artists along with their top 10 tracks! </p>
 			<p>3. Click the tracks to play music, or click an artist's name to make them the new search point.</p>
-			<form id="artist-search" name="artist-search-form">
+			<form id="modal-artist-search" name="artist-search-form">
 				<input type="text" id="artist-input" name="search" value="" placeholder="Search An Artist" aria-label="Search an Artist"/>
-				<input type="submit" name="submit"/>
+				<input type="submit" name="submit" />
 			</form>
 	  	</div>
 	</div>
 	<main class="hidden">
 		<aside>
 			<header>
-				<h1><img src="assets/artistsphere.ico.png" alt="">ARTISTSPHERE</h1>
-			</header>
+				<h1 id="artistsphere">ARTISTSPHERE</h1>
 					 
-			<form id="artist-search" name="artist-search-form">
-				<label for="artist-input"><h2>Search An Artist</h2></label>
-				<input type="text" id="artist-input" name="search" value=""/>
-				<input type="submit" name="submit"/>
-			</form>
+				<form id="artist-search" name="artist-search-form">
+					<label for="artist-input"><h2>Search An Artist</h2></label>
+					<input type="text" id="artist-input2" name="search" value=""/>
+					<button type="submit" name="submit"><span id="submit-desktop">Submit</span><span id="submit-mobile">⌕</span></button>
+				</form>
+			</header>
 
+			<h1>Main Artist</h1>
 			<div id="main-artist" class="hidden">
 			</div>
 		</aside>
 		
 		<div id="related-artists" class="clearfix hidden">
 		</div>
+		<button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
 	</main>
 
 
 	<script id="main-artist-template" type="text/x-handlebars-template">
+
 		<div class="grid-item">
 			<h2>{{name}}</h2>
 			<div class="img">
 				<img src="{{photo}}"" alt="" />
 			</div> 
-			<iframe class= "tracks" src="https://open.spotify.com/embed?uri={{uri}}&theme=white" width="200" height="100" frameborder="0" allowtransparency="true"></iframe>
+			<iframe id="main-artist-1" class="tracks" src="https://open.spotify.com/embed?uri={{uri}}&theme=white" width="200" height="80" frameborder="0" allowtransparency="true"></iframe>
+			<iframe id="main-artist-2" class="tracks" src="https://open.spotify.com/embed?uri={{uri}}&theme=white" width="200" height="300" frameborder="0" allowtransparency="true"></iframe>
 		</div>
 	</script>
 
 	<script id="related-artists-template" class="hidden" type="text/x-handlebars-template">
+		<h1 id="related-artist-mobile">Related Artists</h1>
 	   {{#each artist}}
 			<div class="grid-item clearfix">
 				<div>
@@ -71,7 +76,7 @@
 					<img src="{{photo}}"" alt="" />
 				</div> 
 
-				<iframe class="tracks" src="https://open.spotify.com/embed?uri={{uri}}&theme=white" width="250" height="299" frameborder="0" allowtransparency="true"></iframe>	
+				<iframe class="tracks" src="https://open.spotify.com/embed?uri={{uri}}&theme=white" width="250" height="300" frameborder="0" allowtransparency="true"></iframe>	
 				
 			</div>
 	   {{/each}}

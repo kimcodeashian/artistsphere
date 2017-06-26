@@ -1,17 +1,16 @@
 // RELATED ARTISTS DISPLAY 
 #related-artists {
-	width: 80%;
+	width: 79%;
 	height: 100vh;
 	padding-top: 5vh;
 	overflow: auto;
-	h3 {
 
-	}
+
 	.grid-item {
 		width: 30%;
 		float: left;
 		margin-left: 3%;
-		&:nth-child(3n+2){
+		&:nth-child(3n){
 			background: $pink2;
 			position: relative;
 			top: 70px;
@@ -25,6 +24,9 @@
 		margin-bottom: 20px;
 	}
 }
+
+
+
 a { // artist links
 	text-decoration: none;
 	color: inherit;
@@ -62,4 +64,48 @@ a { // artist links
 		transform: scaleX(1);
 	}
 
+}/* Portrait tablet and small desktops */
+#related-artist-mobile {
+	display: none;
+}
+@media (max-width: 1230px) {
+	#related-artists {
+		display: flex;
+		flex-wrap: wrap;
+		.grid-item {
+			width: 45%;
+			min-width: 300px;
+			float: none;
+			margin: none;
+			&:nth-child(3n){
+				top: 0;
+			}
+		}
+	}
+}
+
+/* Landscape phone to portrait tablet */
+@media (max-width: 955px) {
+	#related-artists {
+		.grid-item {
+			width: 80%;
+			margin: 20px auto;
+			min-width: 300px;
+		}
+	}
+}
+
+/* Landscape phones and down */
+@media (max-width: 650px) {
+	#related-artists {
+		width: 	100%;
+		height: auto;
+		overflow: visible;
+		text-align: center;
+	}
+	#related-artist-mobile {
+		text-align: center;
+		display: block;
+		margin: 0 auto;
+	}
 }

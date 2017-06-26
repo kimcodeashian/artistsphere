@@ -26,11 +26,33 @@ app.init = function(){
 			"Authorization" : `${res.token_type} ${res.access_token}`
 		}
 
-		app.userQuery();
+		app.modalQuery();
 		//keep main hidden 
 		
 	})
 	
+};
+
+app.modalQuery = function(){
+	// auto complete searches
+	// app.displayMatches();
+
+	// wait for user submit
+	$("#modal-artist-search").on("submit", event => {
+		$('#info-modal').fadeOut(300);
+		$('main').removeClass("hidden"); 
+		event.preventDefault();
+
+		// hide search results if searched before - animation effects to take in place 
+		$("#main-artist, #related-artists").addClass("hidden")
+		
+		let query = $("#artist-input").val(); //store value for query purposes
+		$("#artist-input").val(""); //clear text box
+		topFunction();
+		app.getArtistID(query); // find Artist ID from user search
+		app.userQuery(); 
+	});
+
 };
 
 // get user's artist search
@@ -40,25 +62,21 @@ app.userQuery = function(){
 
 	// wait for user submit
 	$("#artist-search").on("submit", event => {
-		$('#info-modal').fadeOut(300);
-		$('main').removeClass("hidden"); 
 		event.preventDefault();
 
 		// hide search results if searched before - animation effects to take in place 
 		$("#main-artist, #related-artists").addClass("hidden")
 		
-		let query = $("input[type='text']").val(); //store value for query purposes
-		$("#artist-input").val(""); //clear text box
+		let query = $("#artist-input2").val(); //store value for query purposes
+		$("#artist-input2").val(""); //clear text box
 
 		app.getArtistID(query); // find Artist ID from user search
 		app.clickArtistNameSearch();
+		app.userQuery();
 	});
 
 };
-app.removeOpeningClasses = function() {
-	$("aside").removeClass("opening");
-	$("#artist-search").removeClass("opening-form");
-}
+
  // get searched artist ID 
 app.getArtistID = function(query){
 	$.ajax({
@@ -140,7 +158,7 @@ app.displayMainArtist = function(artist) {
 	const template = Handlebars.compile(source);
     const html = template(artist);
     $("#main-artist").html(html);
-	$("body").css('background', `linear-gradient(rgba(210, 199, 200, 0.8),rgba(210, 199, 200, 0.8)), url(${artist.photo}) no-repeat center/cover`);
+	$("body").css('background', `linear-gradient(rgba(210, 199, 200, 0.8),rgba(210, 199, 200, 0.8)), url(${artist.photo}) fixed no-repeat center/cover`);
 };
 
 //compiling related artists list with array of artist objects
@@ -150,14 +168,30 @@ app.displayRelatedArtists = function(artists) {
     const artistContext = {"artist": artists}
     const html = template(artistContext);
 	$("#related-artists").html(html);
-	$("#main-artist, #related-artists").removeClass("hidden");
-	$("aside").addClass("searched");	
+	$("#main-artist, #related-artists").removeClass("hidden");	
 };
+
+
+// When the user scrolls down 20px from the top of the document, show the button
+window.onscroll = function(){
+	scrollFunction()
+};
+
+function scrollFunction() {
+    if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+        document.getElementById("myBtn").style.display = "block";
+    } else {
+        document.getElementById("myBtn").style.display = "none";
+    }
+}
+
+// When the user clicks on the button, scroll to the top of the document
+function topFunction() {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+}
 
 // ----- DOCUMENT READY ----- 
 $(function(){
 	app.init();
-
-	
-
 });
