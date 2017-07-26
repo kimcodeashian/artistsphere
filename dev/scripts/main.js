@@ -16,8 +16,8 @@ app.init = function(){
 			params:{
 				grant_type: 'client_credentials'
 			},
-			proxyHeaders: {
-				"Authorization" : "Basic ODc2ZmRjNmRjNDNiNDZmMDliYWFhYTZhN2IzYjExMjk6MzkwYWJmYzFkODAzNDdiY2FmYmNlODZjMmFjODU0OGI="
+			proxyHeaders: { 
+				"Authorization" : "Basic YmVmYjg4OGU4ZWRmNDE0MThmMDNlYjdlN2Y5ZWU4YzQ6MjRlOWY4ODljNzU5NGVlMTk3N2Q5ODk1ZmE0Y2E2NTg="
 			}
 		})
 	})
